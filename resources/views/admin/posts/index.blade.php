@@ -2,7 +2,7 @@
 
 @section('content')
 <div class="container">
-    <h1>Index Crud</h1>
+    <h1>Elenco Post</h1>
     <table class="table">
         <thead>
         <tr>
@@ -16,11 +16,13 @@
             <tr>
                 <th scope="row">{{ $post->id }}</th>
                 <td>{{ $post->title }}</td>
-                <td>xx</td>
+                <td><a class="btn btn-warning" href="{{ route('admin.posts.show', $post) }}">VEDI</a></td>
             </tr>
             @endforeach
         </tbody>
         </table>
+
+        {{ $posts->links() }}
 
 </div>
 @endsection
