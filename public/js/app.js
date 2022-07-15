@@ -49419,6 +49419,9 @@ module.exports = function(module) {
  * includes Vue and other libraries. It is a great starting point when
  * building robust, powerful web applications using Vue and Laravel.
  */
+var _require = __webpack_require__(/*! jquery */ "./node_modules/jquery/dist/jquery.js"),
+    ready = _require.ready;
+
 __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
 
 window.Vue = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.common.js");
@@ -49441,6 +49444,18 @@ Vue.component('example-component', __webpack_require__(/*! ./components/ExampleC
 
 var app = new Vue({
   el: '#app'
+});
+$(), ready(function () {
+  console.log($('#form'));
+  $('form'), submit(function (event) {
+    $('#error-title').hide();
+
+    if ($('#title').val().length === 0) {
+      $('error-tile').show('slow').text('Il titolo è un campo obbligatorio').fadeOut(5000);
+    }
+
+    event.preventDefault();
+  });
 });
 
 /***/ }),

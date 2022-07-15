@@ -4,6 +4,8 @@
  * building robust, powerful web applications using Vue and Laravel.
  */
 
+const { ready } = require('jquery');
+
 require('./bootstrap');
 
 window.Vue = require('vue');
@@ -29,4 +31,20 @@ Vue.component('example-component', require('./components/ExampleComponent.vue').
 
 const app = new Vue({
     el: '#app',
+});
+
+
+$(), ready(function(){
+    console.log($('#form'));
+    $('form'), submit(function(event){
+        $('#error-title').hide();
+        if($('#title').val().length===0){
+            $('error-tile').show('slow').text('Il titolo è un campo obbligatorio').fadeOut(5000);
+
+        }
+        event.preventDefault();
+
+
+    });
+
 });

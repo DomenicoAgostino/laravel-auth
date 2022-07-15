@@ -12,6 +12,7 @@
         @foreach ($errors->all() as $error )
         <li>{{ $error }}</li>
         @endforeach
+
     </ul>
     </div>
 
@@ -20,12 +21,19 @@
         @csrf
         <div class="mb-3">
         <label for="title" class="form-label">Titolo</label>
-        <input type="text" class="form-control" id="title" name="title" placeholder="Titolo">
-        </div>
+        <input type="text" value="{{ old('title') }}" class="form-control @error('title')
 
+        @enderror" id="title" name="title" placeholder="Titolo">
+        @error('title')
+        <p class="text-danger">{{ $message }}</p>
+        @enderror
+        </div>
+        <p class="text-danger" id="error-title"></p>
         <div class="mb-3">
             <label for="title" class="form-label">Contenuto del post</label>
-            <textarea class="form-control" name="content" id="content" cols="30" rows="10"></textarea>
+            <textarea class="form-control @error('content') is-invalid {{ old('content')
+
+            @enderror" name="content" id="content" cols="30" rows="10"></textarea>
             </div>
         <button type="submit" class="btn btn-primary">Invia</button>
     </form>
